@@ -32,9 +32,9 @@ export default new Vuex.Store({
           dispatch('getComments')
         })
     },
-    async getComments({ commit, state }, id) {
+    async getComments({ commit, state }) {
       let res = await _api.get(state.currentBug._id + '/notes')
-      commit('setComments', res.data)
+      commit('setComments', res.data.results)
     },
     async getBugs({ commit }) {
       let res = await _api.get('')

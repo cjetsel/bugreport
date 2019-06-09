@@ -99,8 +99,10 @@
       let currentBug = this.$store.state.currentBug
       if (!currentBug._id) {
         this.$store.dispatch("getBug", this.$route.params.id);
-        this.$store.dispatch('getComments', this.$route.params.id);
+        this.$store.dispatch('getComments');
       }
+
+      this.$store.dispatch('getComments');
       setTimeout(() => {
         if (!this.currentBug) {
           this.$router.push({ name: "home" })
@@ -113,7 +115,7 @@
         return this.$store.state.currentBug;
       },
       notes() {
-        return this.$store.state.comments.results
+        return this.$store.state.comments
       }
     },
     components: {

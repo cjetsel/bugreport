@@ -36,12 +36,19 @@ export default new Vuex.Store({
       let res = await _api.get(state.currentBug._id + '/notes')
       commit('setComments', res.data.results)
     },
+    async getCurrentComments({ commit }, id) {
+      let res = await _api.get(id + "/notes")
+      commit('setComments', res.data.results)
+    },
+
     async getBugs({ commit }) {
       let res = await _api.get('')
+      console.log(res.data.results)
       commit('setBugs', res.data.results)
     },
     async getBug({ commit }, id) {
       let res = await _api.get(id)
+
       commit('setCurrentBug', res.data.results)
     },
     createBug({ commit, dispatch }, payload) {
@@ -55,10 +62,15 @@ export default new Vuex.Store({
       commit('setCurrentBug', bug)
     },
     async toggleClosed({ commit, dispatch }, id) {
-      debugger
       let res = await _api.delete(id)
         .then(res => {
           commit('setCurrentBug', res.data)
+        })
+    },
+    async deleteComment({ commit, dispatch, state }, id) {
+      let res = await _api.delete(state.currentBug._id + '/notes/' + id)
+        .then(res => {
+          dispatch('getComments')
         })
     }
   }

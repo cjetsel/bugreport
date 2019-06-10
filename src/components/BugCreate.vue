@@ -1,15 +1,23 @@
 <template>
-  <div class="container bug-create mt-3">
+  <div class="container bug-create mt-3 rounded p-3">
     <form class="form-row justify-content-center" @submit.prevent="handleSubmit">
       <div class="col-6">
-        <label for="title">Title: </label>
-        <input type="text" placeholder="Title" name="title" v-model="title" id="title" class="form-control">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Title</span>
+          </div>
+          <input type="text" placeholder="Title" name="title" v-model="title" id="title" class="form-control">
+        </div>
       </div>
       <div class="col-6">
-        <label for="creator">Reported by: </label>
-        <input type="text" id="creator" name="creator" v-model="creator" placeholder="Name" class="form-control">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Reported by</span>
+          </div>
+          <input type="text" id="creator" name="creator" v-model="creator" placeholder="Name" class="form-control">
+        </div>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-3">
         <label for="description">Description of Bug:</label>
         <textarea class="form-control" v-model="description" id="description" rows="5"></textarea>
       </div>
@@ -51,5 +59,8 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .container {
+    background-color: rgba(255, 255, 255, 0.048);
+  }
 </style>

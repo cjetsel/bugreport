@@ -1,5 +1,5 @@
 <template>
-  <div class="bug-details container rounded bg-dark p-3 text-white">
+  <div class="mt-5 bug-details container rounded p-3 text-white">
     <div class="row justify-content-center">
       <div class="col-10">
         <h4 class="text-center"><strong>{{currentBug.title}}</strong></h4>
@@ -8,7 +8,8 @@
     <div class="row justify-content-center">
 
       <div class="col-7">
-        <h6 class="text-left"><strong>Created On:</strong> {{currentBug.createdAt}} <strong>by</strong>
+        <h6 class="text-left"><strong>Created On:</strong>
+          {{new Date(currentBug.createdAt).toLocaleDateString()}}<strong>by</strong>
           {{currentBug.creator}} </h6>
         <h6 class="text-left"><strong>Last Update:</strong> {{currentBug.lastUpdate}}</h6>
       </div>
@@ -53,7 +54,10 @@
           <div class="col">
             {{note.content}}
           </div>
-          <div class="form-check form-check-inline">
+          <div class="col">
+            <img @click="removeComment(note._id)" class="img-fluid" src="../assets/016-remove.svg" alt="">
+          </div>
+          <!-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" v-model="completed" name="inlineRadioOptions" id="note._id-C"
               value="option1">
             <label class="form-check-label" for="inlineRadio1">Completed</label>
@@ -67,7 +71,7 @@
             <input class="form-check-input" type="radio" v-model="rejected" name="inlineRadioOptions" id="note._id-R"
               value="option3">
             <label class="form-check-label" for="inlineRadio3">Rejected</label>
-          </div>
+          </div> -->
 
 
 
@@ -82,33 +86,18 @@
 
 <script>
   // @ is an alias to /src
-
-  import { setTimeout } from 'timers';
   export default {
     name: "BugDetail",
-    props: ["id"],
     data() {
       return {
         content: '',
-        bug: this.$store.state.currentBug,
+        bug: this.$store.state.currentBug._id,
         creator: '',
         flagged: ''
       }
     },
     mounted() {
-      let currentBug = this.$store.state.currentBug
-      if (!currentBug._id) {
-        this.$store.dispatch("getBug", this.$route.params.id);
-        this.$store.dispatch('getComments');
-      }
-
       this.$store.dispatch('getComments');
-      setTimeout(() => {
-        if (!this.currentBug) {
-          this.$router.push({ name: "home" })
-        }
-      }, 3000)
-
     },
     computed: {
       currentBug() {
@@ -124,6 +113,7 @@
     methods: {
       toggleClosed(id) {
         this.$store.dispatch("toggleClosed", id)
+        // this.$router.push({ name: 'home' })
       },
       handleSubmit() {
         let data = {
@@ -132,7 +122,21 @@
         }
         this.$store.dispatch('addComment', data)
         this.$router.push({ name: 'Detail' })
+      },
+      removeComment(id) {
+        this.$store.dispatch('deleteComment', id)
       }
+
     }
   };
 </script>
+
+<style scoped>
+  .container {
+    background-color: rgba(93, 155, 236, 0.363);
+  }
+
+  .img-fluid {
+    width: 2.8rem;
+  }
+</style>

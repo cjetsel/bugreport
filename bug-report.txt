@@ -93,3 +93,18 @@ Functionality
 Bugs can be created and marked complete X
 Notes can be added and removed from a bug XX
 Utilize the Route Params to retain bug details page on refresh XX
+
+
+ED5564 red
+
+5D9CEC blue
+
+FC6E51 orange 
+
+A0E557 green
+
+AC92EB purple
+
+FFCE54 yellow
+
+434A54 gray

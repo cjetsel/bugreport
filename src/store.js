@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 const _api = axios.create({
-  baseURL: 'https://bcw-sandbox.herokuapp.com/api/chelseytest/bugs'
+  baseURL: 'https://bcw-sandbox.herokuapp.com/api/chelsey/bugs'
 })
 
 Vue.use(Vuex)
@@ -36,6 +36,7 @@ export default new Vuex.Store({
       let res = await _api.get(state.currentBug._id + '/notes')
       commit('setComments', res.data.results)
     },
+
     async getCurrentComments({ commit }, id) {
       let res = await _api.get(id + "/notes")
       commit('setComments', res.data.results)

@@ -8,7 +8,7 @@
         <h4><strong>Your mission:</strong> Capture and Exterminate Bugs</h4>
       </div>
       <div class="col-12">
-        <h6><em>Generally you don't see that kind of behavior in a major appliance</em></h6>
+        <small><em>Generally you don't see that kind of behavior in a major appliance</em></small>
       </div>
     </div>
     <div class="col-12 mt-5">

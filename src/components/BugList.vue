@@ -16,9 +16,10 @@
               :class="{closed: bug.closed, open:!bug.closed}">
               <td>{{bug.creator}}</td>
               <td>{{bug.title}}</td>
-              <td>{{bug.user}}</td>
+              <td v-if="bug.closed"><img src="../assets/check.svg" class="icon" alt=""> </td>
+              <td v-else><img src="../assets/warning.svg" class="icon" alt=""></td>
               <td v-if="bug.closedAt">{{new Date(bug.closedAt).toLocaleDateString()}}</td>
-              <td v-else>open</td>
+              <td v-else>-----</td>
             </tr>
 
           </tbody>
@@ -67,5 +68,9 @@
 <style scoped>
   .container {
     background-color: rgba(255, 255, 255, 0.048);
+  }
+
+  .icon {
+    height: 2rem;
   }
 </style>

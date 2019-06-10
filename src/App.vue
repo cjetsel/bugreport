@@ -31,6 +31,8 @@
           <img src="./assets/013-bug-2.svg" class="icon" alt="">
           <h1>CAPTURE BUG</h1>
         </router-link><br>
+        <audio src="https://instrumentalfx.co/wp-content/upload/11/GhostBusters-theme-song.mp3?_=3" controls
+          autoplay="autoplay"></audio>
       </div>
       <div class="col-9 margin-push" id="main">
         <router-view />
@@ -42,9 +44,9 @@
 </template>
 
 <style>
-  * {
+  /* * {
     outline: 1px solid blueviolet;
-  }
+  } */
 
   em {
     color: rgba(184, 184, 184, 0.664);

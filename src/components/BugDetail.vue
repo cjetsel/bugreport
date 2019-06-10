@@ -2,16 +2,29 @@
   <div class="mt-5 bug-details container rounded p-3 text-white">
     <div class="row justify-content-center">
       <div class="col-10">
-        <h4 class="text-center"><strong>{{currentBug.title}}</strong></h4>
+        <h2 class="text-center">{{currentBug.title}}</h2>
       </div>
     </div>
     <div class="row justify-content-center">
 
       <div class="col-7">
-        <h6 class="text-left"><strong>Created On:</strong>
-          {{new Date(currentBug.createdAt).toLocaleDateString()}}<strong>by</strong>
-          {{currentBug.creator}} </h6>
-        <h6 class="text-left"><strong>Last Update:</strong> {{currentBug.lastUpdate}}</h6>
+        <div class="row">
+          <div class="col-6">
+            <h6 class="text-left"><strong>Created On:</strong>
+              {{new Date(currentBug.createdAt).toLocaleDateString()}}</h6>
+          </div>
+          <div class="col-6">
+            <h6 class="text-right"><strong>Created By: </strong>
+              {{currentBug.creator}}</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h6 class="text-left"><strong>Last Update:</strong>
+              {{new Date(currentBug.updatedAt).toLocaleDateString()}}
+            </h6>
+          </div>
+        </div>
       </div>
       <div class="col-3">
         <button class="btn btn-primary" @click="toggleClosed(currentBug._id)"
@@ -25,7 +38,7 @@
     </div>
     <div class="row justify-content-center pt-3">
       <div class="col-10 text-center">
-        <h6>Description:</h6>
+        <h6><strong>Description:</strong></h6>
         <p>{{currentBug.description}}</p>
       </div>
 
@@ -46,16 +59,19 @@
       </div>
     </form>
     <div class="row justify-content-center">
-      <div class="col-10 rounded bg-primary mt-1" v-for="note in notes">
+      <div class="col-10 rounded note mt-1 align-self-center" v-for="note in notes">
         <div class="row">
-          <div class="col">
+          <div class="col-2 align-self-center">
             {{note.creator}}
           </div>
-          <div class="col">
+          <div class="col-7 align-self-center">
             {{note.content}}
           </div>
-          <div class="col">
-            <img @click="removeComment(note._id)" class="img-fluid" src="../assets/016-remove.svg" alt="">
+          <div class="col-2 align-self-center">
+            {{new Date(note.createdAt).toLocaleDateString()}}
+          </div>
+          <div class="col-1 align-self-center text-right">
+            <img @click="removeComment(note._id)" class="img-fluid" src="../assets/trash.svg" alt="">
           </div>
           <!-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" v-model="completed" name="inlineRadioOptions" id="note._id-C"
@@ -80,8 +96,8 @@
         </div>
       </div>
     </div>
-
   </div>
+
 </template>
 
 <script>
@@ -132,11 +148,19 @@
 </script>
 
 <style scoped>
-  .container {
+  . .container {
     background-color: rgba(93, 155, 236, 0.363);
   }
 
+  strong {
+    font-size: 1.3rem;
+  }
+
   .img-fluid {
-    width: 2.8rem;
+    width: 2.5rem;
+  }
+
+  .note {
+    background-color: #434A54;
   }
 </style>

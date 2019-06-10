@@ -48,12 +48,15 @@
     <form class="form-row py-3 justify-content-center" @submit.prevent="handleSubmit" v-show="!currentBug.closed">
       <div class="col-10">
         <div class="row">
-          <div class="col-3">
-            <input type="text" class="form-control" v-model="creator" name="creator"></div>
-          <div class="col-6">
-            <input type="text" class="form-control" v-model="content" name="content"></div>
-          <div class="col-3">
-            <button class="btn" type="submit">Add Note</button>
+          <div class="col-12 text-center">
+            <p class="p-0 m-0">Add a Note:</p>
+          </div>
+          <div class="col-3 align-self-center">
+            <input type="text" class="form-control" v-model="creator" name="creator" placeholder="Name"></div>
+          <div class="col-6 align-self-center">
+            <input type="text" class="form-control" v-model="content" name="content" placeholder="Note here..."></div>
+          <div class="col-2 align-self-center">
+            <button class="btn rounded" type="submit"><img src="../assets/note.svg" class="img-fluid" alt=""></button>
           </div>
         </div>
       </div>
@@ -148,7 +151,11 @@
 </script>
 
 <style scoped>
-  . .container {
+  .container {
+    background-color: rgba(93, 155, 236, 0.363);
+  }
+
+  .bugdetails {
     background-color: rgba(93, 155, 236, 0.363);
   }
 

@@ -17,7 +17,7 @@
       <div class="col-3"></div>
       <div class="col-3 p-0 "></div>
     </div>
-    <div class="row d-flex">
+    <div class="row d-flex" id="nav">
       <div class="col-3 fixed bg-dark p-0">
         <router-link to="/">
           <img src="./assets/planet-earth.svg" class="icon" alt="">
@@ -31,13 +31,14 @@
           <img src="./assets/013-bug-2.svg" class="icon" alt="">
           <h1>CAPTURE BUG</h1>
         </router-link><br>
-        <audio src="https://instrumentalfx.co/wp-content/upload/11/GhostBusters-theme-song.mp3?_=3" controls
-          autoplay="autoplay"></audio>
-      </div>
-      <div class="col-9 margin-push" id="main">
-        <router-view />
+        <audio class="hide" src="https://instrumentalfx.co/wp-content/upload/11/GhostBusters-theme-song.mp3?_=3"
+          controls autoplay loop></audio>
       </div>
     </div>
+    <div class="col-9 margin-push" id="main">
+      <router-view />
+    </div>
+  </div>
 
 
   </div>
@@ -48,12 +49,16 @@
     outline: 1px solid blueviolet;
   } */
 
-  em {
-    color: rgba(184, 184, 184, 0.664);
+  router-link {
+    color: #5D9CEC;
   }
 
-  h1:hover {
-    color: #5D9CEC;
+  em {
+    color: #ED5564;
+  }
+
+  .hide {
+    margin-top: 30rem;
   }
 
   .padding-center {
@@ -100,21 +105,24 @@
     color: #fff;
   }
 
-  #nav {
-    padding: 30px;
-  }
-
   #nav a {
     font-weight: bold;
+    color: #5D9CEC;
 
+  }
+
+  #nav a:hover {
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
   }
 
   #nav a.router-link-exact-active {
-    color: red;
+    color: #A0E557;
   }
 
   .body {
-    background-color: rgb(43, 43, 43);
+    background-color: black;
     overflow-x: hidden;
     overflow-y: scroll;
   }

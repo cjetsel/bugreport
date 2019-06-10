@@ -17,7 +17,7 @@
               <td>{{bug.creator}}</td>
               <td>{{bug.title}}</td>
               <td v-if="bug.closed"><img src="../assets/check.svg" class="icon" alt=""> </td>
-              <td v-else><img src="../assets/warning.svg" class="icon" alt=""></td>
+              <td v-else>-----</td>
               <td v-if="bug.closedAt">{{new Date(bug.closedAt).toLocaleDateString()}}</td>
               <td v-else>-----</td>
             </tr>

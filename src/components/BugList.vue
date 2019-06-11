@@ -44,7 +44,6 @@
     },
     methods: {
       viewDetails(bug) {
-        debugger
         this.$store.dispatch('setBug', bug)
         this.$router.push({ name: 'Detail', params: { id: bug._id } })
       }

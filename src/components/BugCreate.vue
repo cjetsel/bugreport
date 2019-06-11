@@ -21,7 +21,7 @@
         <label for="description">Description of Bug:</label>
         <textarea class="form-control" v-model="description" id="description" rows="5"></textarea>
       </div>
-      <div class="col-3">
+      <div class="col-3 mt-3">
         <button type="submit" class="btn btn-success">Submit</button>
       </div>
     </form>
@@ -50,7 +50,7 @@
           description: this.description
         }
         this.$store.dispatch('createBug', data)
-        this.$router.push({ name: 'home' })
+        this.$router.push({ name: 'BugStorage' })
       }
     },
     components: {

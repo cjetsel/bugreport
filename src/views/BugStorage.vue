@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 mt-5">
         <h1>Bug Storage</h1>
-        <h6><em>That's gotta be some cockroach.</em></h6>
+        <small><em>Generally you don't see that kind of behavior in a major appliance</em></small>
       </div>
     </div>
     <div class="row">

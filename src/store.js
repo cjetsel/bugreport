@@ -29,6 +29,7 @@ export default new Vuex.Store({
     addComment({ commit, dispatch, state }, payload) {
       _api.post(state.currentBug._id + '/notes', payload)
         .then(res => {
+
           dispatch('getComments')
         })
     },

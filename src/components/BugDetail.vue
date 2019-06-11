@@ -6,29 +6,28 @@
       </div>
     </div>
     <div class="row justify-content-center">
-
-      <div class="col-7">
+      <div class="col-10">
         <div class="row">
-          <div class="col-6">
-            <h6 class="text-left"><strong>Created On:</strong>
+          <div class="col-4">
+            <h6 class="text-center"><strong>Created On:</strong>
               {{new Date(currentBug.createdAt).toLocaleDateString()}}</h6>
           </div>
-          <div class="col-6">
-            <h6 class="text-right"><strong>Created By: </strong>
+          <div class="col-4">
+            <h6 class="text-center"><strong>Created By: </strong>
               {{currentBug.creator}}</h6>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <h6 class="text-left"><strong>Last Update:</strong>
+
+          <div class="col-4">
+            <h6 class="text-center"><strong>Last Update:</strong>
               {{new Date(currentBug.updatedAt).toLocaleDateString()}}
             </h6>
           </div>
         </div>
       </div>
       <div class="col-3">
-        <button class="btn btn-primary" @click="toggleClosed(currentBug._id)"
-          v-show="!currentBug.closed">Complete</button>
+        <button class="btn text-success" @click="toggleClosed(currentBug._id)" v-show="!currentBug.closed">
+          <img class="img" src="../assets/check.svg" alt=""> CLOSE
+          BUG</button>
         <h5 class="text-center text-danger" v-show="currentBug.closed"><em>CLOSED</em></h5>
       </div>
     </div>
@@ -48,15 +47,16 @@
     <form class="form-row py-3 justify-content-center" @submit.prevent="handleSubmit" v-show="!currentBug.closed">
       <div class="col-10">
         <div class="row">
-          <div class="col-12 text-center">
-            <p class="p-0 m-0">Add a Note:</p>
+          <div class="col-2 align-self-center">
+            <small class="p-0 m-0 text-left">Add a Note:</small>
           </div>
-          <div class="col-3 align-self-center">
+          <div class="col-3 align-self-center p-1">
             <input type="text" class="form-control" v-model="creator" name="creator" placeholder="Name"></div>
-          <div class="col-6 align-self-center">
+          <div class="col-5 align-self-center p-1">
             <input type="text" class="form-control" v-model="content" name="content" placeholder="Note here..."></div>
           <div class="col-2 align-self-center">
-            <button class="btn rounded" type="submit"><img src="../assets/note.svg" class="img-fluid" alt=""></button>
+            <button class="btn text-success text-left" type="submit"><img class="img-fill" src="../assets/ui.svg"
+                alt=""> SUBMIT</button>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@
           <div class="col-2 align-self-center">
             {{new Date(note.createdAt).toLocaleDateString()}}
           </div>
-          <div class="col-1 align-self-center text-right">
-            <img @click="removeComment(note._id)" class="img-fluid" src="../assets/trash.svg" alt="">
+          <div class="col-1 text-right">
+            <img @click="removeComment(note._id)" class="img" src="../assets/trash.svg" alt="">
           </div>
           <!-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" v-model="completed" name="inlineRadioOptions" id="note._id-C"
@@ -132,7 +132,7 @@
     methods: {
       toggleClosed(id) {
         this.$store.dispatch("toggleClosed", id)
-        // this.$router.push({ name: 'home' })
+        this.$router.push({ name: 'BugStorage' })
       },
       handleSubmit() {
         let data = {
@@ -163,8 +163,15 @@
     font-size: 1.3rem;
   }
 
-  .img-fluid {
+  .img {
     width: 2.5rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .img-fill {
+    width: 2rem;
+
   }
 
   .note {
